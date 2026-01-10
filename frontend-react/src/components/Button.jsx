@@ -1,10 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Button = (props) => {
+const Button = ({ text, class: className, url, onClick }) => {
+  if (url) {
+    return (
+      <Link to={url} className={`btn ${className}`}>
+        {text}
+      </Link>
+    )
+  }
+
   return (
-    <>
-        <a className={`btn ${props.class}`} href='#'>{props.text}</a>
-    </>
+    <button className={`btn ${className}`} onClick={onClick}>
+      {text}
+    </button>
   )
 }
 
